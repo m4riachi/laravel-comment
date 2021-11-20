@@ -1,0 +1,54 @@
+{
+    "name": "m4riachi/laravel-comment",
+    "description": "add comment bloc to your laravel application",
+    "keywords": [
+        "m4riachi",
+        "laravel-comment"
+    ],
+    "homepage": "https://github.com/m4riachi/laravel-comment",
+    "license": "MIT",
+    "type": "library",
+    "authors": [
+        {
+            "name": "Taoufiq BEN",
+            "email": "taoufiq.benmessaoud@gmail.com",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": "^7.4|^8.0",
+        "illuminate/support": "^8.0"
+    },
+    "require-dev": {
+        "orchestra/testbench": "^6.0",
+        "phpunit/phpunit": "^9.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "M4riachi\\LaravelComment\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "M4riachi\\LaravelComment\\Tests\\": "tests"
+        }
+    },
+    "scripts": {
+        "test": "vendor/bin/phpunit",
+        "test-coverage": "vendor/bin/phpunit --coverage-html coverage"
+
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "M4riachi\\LaravelComment\\LaravelCommentServiceProvider"
+            ],
+            "aliases": {
+                "LaravelComment": "M4riachi\\LaravelComment\\LaravelCommentFacade"
+            }
+        }
+    }
+}
