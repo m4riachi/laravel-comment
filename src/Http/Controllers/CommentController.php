@@ -4,28 +4,18 @@ namespace M4riachi\LaravelComment\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use M4riachi\LaravelComment\Actions\RecaptchaVerifyingUserResponseAction;
+use M4riachi\LaravelComment\Http\Requests\CommentRequest;
+use M4riachi\LaravelComment\Models\Comment;
 
-class CommentController {
-    public function index() {
-        dd(2);
-    }
-
-    public function save(Request $request) {
-        $guestUser = config('m4-comment.guest-user', true);
-        if (!$guestUser && !Auth::check()) {
-            abort(404);
-        }
-
-        $inputValidator = config('m4-comment.input-validator', [
-            'name' => ['required', 'string', 'max:192'],
-            'email' => ['required', 'string', 'email', 'max:192'],
-            'comment' => ['required', 'string'],
+class CommentController extends Controller {
+    public function save(CommentRequest $request) {
+        $data = $request->safe()->only([
+            'user_name', 'user_email', 'comment', 'url_path', 'url_query', 'user_id', 'status'
         ]);
-        $data = $request->validated($inputValidator);
 
-        if (Auth::check()) {
-            $data['user_id'] = auth()->user()->id;
-        }
+        Comment::create($data);
 
+        return back()->with('status', 'success');
     }
 }

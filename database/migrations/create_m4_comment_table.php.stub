@@ -22,6 +22,8 @@ class CreateM4CommentTable extends Migration
             $table->string('user_name')->nullable();
             $table->string('user_email')->nullable();
 
+            $table->string('url_path');
+            $table->string('url_query')->nullable();
             $table->text('comment');
 
             $table->enum('status', [

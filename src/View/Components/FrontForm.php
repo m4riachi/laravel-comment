@@ -3,17 +3,20 @@
 namespace M4riachi\LaravelComment\View\Components;
 
 use Illuminate\View\Component;
+use Illuminate\Http\Request;
 
 class FrontForm extends Component
 {
+    public $url_path, $url_query;
     /**
      * Create a new component instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct(Request $request)
     {
-
+        $this->url_query = $_SERVER['QUERY_STRING'] ?? null;
+        $this->url_path = $request->path();
     }
 
     /**

@@ -3,6 +3,8 @@
 namespace M4riachi\LaravelComment;
 
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Routing\Router;
+use M4riachi\LaravelComment\Http\Middleware\CheckUser;
 use M4riachi\LaravelComment\View\Components\FrontBloc;
 use M4riachi\LaravelComment\View\Components\FrontForm;
 use M4riachi\LaravelComment\View\Components\FrontList;
@@ -14,6 +16,8 @@ class LaravelCommentServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        $router = $this->app->make(Router::class);
+        $router->aliasMiddleware('m4-check-user', CheckUser::class);
         /*
          * Optional methods to load your package assets
          */
@@ -36,26 +40,6 @@ class LaravelCommentServiceProvider extends ServiceProvider
             $this->publishes([
                 __DIR__.'/../database/migrations/create_m4_comment_table.php.stub' => database_path('migrations/' . date('Y_m_d_His', time()) . '_create_m4_comment_table.php'),
             ], 'm4-migrations');
-        }
-
-        if ($this->app->runningInConsole()) {
-            // Publishing the views.
-            /*$this->publishes([
-                __DIR__.'/../resources/views' => resource_path('views/vendor/laravel-comment'),
-            ], 'views');*/
-
-            // Publishing assets.
-            /*$this->publishes([
-                __DIR__.'/../resources/assets' => public_path('vendor/laravel-comment'),
-            ], 'assets');*/
-
-            // Publishing the translation files.
-            /*$this->publishes([
-                __DIR__.'/../resources/lang' => resource_path('lang/vendor/laravel-comment'),
-            ], 'lang');*/
-
-            // Registering package commands.
-            // $this->commands([]);
         }
     }
 

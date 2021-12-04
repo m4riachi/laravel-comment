@@ -11,11 +11,7 @@
                 </div>
                 <p>consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.</p>
                 <div class="pad-ver">
-                    <div class="btn-group">
-                        <a class="btn btn-sm btn-default btn-hover-success" href="#"><i class="fa fa-thumbs-up"></i></a>
-                        <a class="btn btn-sm btn-default btn-hover-danger" href="#"><i class="fa fa-thumbs-down"></i></a>
-                    </div>
-                    <a class="btn btn-sm btn-default btn-hover-primary" href="#">Comment</a>
+                    <a class="btn btn-sm btn-default btn-hover-primary" href="#">Replay</a>
                 </div>
                 <hr>
 
