@@ -8,6 +8,7 @@ use M4riachi\LaravelComment\Http\Middleware\CheckUser;
 use M4riachi\LaravelComment\View\Components\FrontBloc;
 use M4riachi\LaravelComment\View\Components\FrontForm;
 use M4riachi\LaravelComment\View\Components\FrontList;
+use M4riachi\LaravelComment\View\Components\FrontListComment;
 
 class LaravelCommentServiceProvider extends ServiceProvider
 {
@@ -30,6 +31,7 @@ class LaravelCommentServiceProvider extends ServiceProvider
             FrontBloc::class,
             FrontForm::class,
             FrontList::class,
+            FrontListComment::class,
         ]);
 
         $this->publishes([

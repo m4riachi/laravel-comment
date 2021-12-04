@@ -6,6 +6,8 @@
 return [
     'guest-user' => true,
     'default_status' => 'pending',
+    'with_url_query' => false,
+    'user_class' => '\App\Models\User',
     'input-validator' => [
         'user_name' => ['required', 'string', 'max:192'],
         'user_email' => ['required', 'string', 'email', 'max:192'],

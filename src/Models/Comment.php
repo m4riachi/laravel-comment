@@ -10,4 +10,8 @@ class Comment extends Model
     protected $fillable = [
         'user_name', 'user_email', 'comment', 'url_path', 'url_query', 'user_id', 'status'
     ];
+
+    public function user() {
+        return $this->belongsTo(config('m4-comment.user_class', '\App\Models\User'));
+    }
 }
