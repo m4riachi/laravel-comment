@@ -14,8 +14,9 @@
                     {{ $comment['comment'] }}
                 </p>
                 <div class="pad-ver">
-                    <a class="btn btn-sm btn-default btn-hover-primary" href="#">Replay</a>
+                    <button class="btn btn-sm btn-default btn-hover-primary" onclick="replayComment({{ $comment['id'] }})">Replay</button>
                 </div>
+                <div id="replay{{ $comment['id'] }}"></div>
                 <hr>
                 @if (isset($comment['sub']) && count($comment['sub']) > 0)
                     <x-m4-comment-front-list-comment :comments="$comment['sub']" />

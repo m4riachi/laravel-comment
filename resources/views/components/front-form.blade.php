@@ -1,4 +1,4 @@
-<div class="panel">
+<div class="panel" id="formComment">
     @if ($errors->any())
         <div class="alert alert-danger">
             <ul>
@@ -21,6 +21,7 @@
         <input type="hidden" name="url_path" value="{{ $url_path }}">
         <input type="hidden" name="url_query" value="{{ $url_query }}">
         <input type="hidden" name="user_id" value="1">
+        <input type="hidden" name="m4_comment_id" class="m4_comment_id" value="">
         <div class="panel-body">
             @guest
             <div class="form-group">
@@ -40,12 +41,10 @@
             </div>
             <div class="mar-top clearfix">
                 @if (config('m4-comment.recaptcha.enable', false))
-                <button class="g-recaptcha btn btn-sm btn-primary pull-right"
-                        data-sitekey="{{config('m4-comment.recaptcha.site-key')}}"
-                        data-callback="onSubmit"
-                        data-action="submit">
+                <button class="btn btn-sm btn-primary pull-right"  type="submit">
                     <i class="fa fa-pencil fa-fw"></i> Share
                 </button>
+                <input type="hidden" name="g-recaptcha-response" id="g-recaptcha-response">
                 @else
                     <button class="btn btn-sm btn-primary pull-right" type="submit">
                         <i class="fa fa-pencil fa-fw"></i> Share
@@ -53,12 +52,6 @@
                 @endif
             </div>
         </div>
-        <script src="https://www.google.com/recaptcha/api.js"></script>
-        <script>
-            function onSubmit(token) {
-                document.getElementById("m4CommentForm").submit();
-            }
-        </script>
     </form>
     @else
         <div class="panel-body">

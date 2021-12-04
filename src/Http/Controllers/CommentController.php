@@ -11,7 +11,7 @@ use M4riachi\LaravelComment\Models\Comment;
 class CommentController extends Controller {
     public function save(CommentRequest $request) {
         $data = $request->safe()->only([
-            'user_name', 'user_email', 'comment', 'url_path', 'url_query', 'user_id', 'status'
+            'user_name', 'user_email', 'comment', 'url_path', 'url_query', 'user_id', 'status', 'm4_comment_id'
         ]);
 
         Comment::create($data);

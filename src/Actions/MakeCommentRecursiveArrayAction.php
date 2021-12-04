@@ -13,18 +13,16 @@ class MakeCommentRecursiveArrayAction
             }
         }
 
-        if (count($new_ar) == 0) {
-            $new_ar[] = $v;
-            return $new_ar;
-        } else {
-            foreach ($new_ar as $k => $n) {
-                if (isset($new_ar[$k]['sub'])) {
-                    $new_ar[$k]['sub'] = self::execute($n['sub'], $v);
-                    return $new_ar;
-                }
+        foreach ($new_ar as $k => $n) {
+            if (isset($n['sub'])) {
+                $new_ar[$k]['sub'] = self::execute($n['sub'], $v);
             }
-            $new_ar[] = $v;
-            return $new_ar;
         }
+
+        if (is_null($v['m4_comment_id'])) {
+            $new_ar[] = $v;
+        }
+
+        return $new_ar;
     }
 }

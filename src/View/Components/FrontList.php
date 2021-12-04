@@ -23,7 +23,7 @@ class FrontList extends Component
             ->where('url_path', $request->path())
             ->with('user')
             ->orderBy('m4_comment_id', 'asc')
-            ->orderBy('created_at', 'asc')
+            ->orderBy('id', 'asc')
             ->get()->toArray();
 
         $new_ar = [];

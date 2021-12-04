@@ -37,22 +37,20 @@ class CommentRequest extends FormRequest
      */
     public function rules()
     {
-        if (auth()->check()) {
-            $validators = [
-                'comment' => config('m4-comment.input-validator.comment', ['required', 'string'])
-            ];
-        } else {
-            $validators = config('m4-comment.input-validator', [
-                'user_name' => ['required', 'string', 'max:192'],
-                'user_email' => ['required', 'string', 'email', 'max:192'],
-                'comment' => ['required', 'string'],
-            ]);
-        }
+        $validators = [
+            'url_path' => ['required'],
+            'url_query' => ['nullable'],
+            'user_id' => ['nullable'],
+            'm4_comment_id' => ['nullable'],
+            'status' => ['required'],
+            'user_name' => config('m4-comment.input-validator.user_name', ['required', 'string', 'max:192']),
+            'user_email' => config('m4-comment.input-validator.user_email', ['required', 'string', 'max:192']),
+            'comment' => config('m4-comment.input-validator.comment', ['required', 'string']),
+        ];
 
-        $validators['url_path'] = ['required'];
-        $validators['url_query'] = ['nullable'];
-        $validators['user_id'] = ['nullable'];
-        $validators['status'] = ['required'];
+        if (auth()->check()) {
+            $validators['user_email'] = $validators['user_name'] = ['nullable'];
+        }
 
         return $validators;
     }

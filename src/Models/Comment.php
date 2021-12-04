@@ -8,7 +8,7 @@ class Comment extends Model
 {
     protected $table = 'm4_comments';
     protected $fillable = [
-        'user_name', 'user_email', 'comment', 'url_path', 'url_query', 'user_id', 'status'
+        'user_name', 'user_email', 'comment', 'url_path', 'url_query', 'user_id', 'status', 'm4_comment_id'
     ];
 
     public function user() {
