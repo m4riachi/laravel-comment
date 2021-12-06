@@ -1,19 +1,15 @@
 <div class="panel" id="formComment">
-    @if ($errors->any())
-        <div class="alert alert-danger">
-            <ul>
-                @foreach ($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                @endforeach
-            </ul>
-        </div>
-    @endif
+    <div class="alert alert-danger" style="display: {{ $errors->any() ? 'block' : 'none' }}">
+        <ul class="error_li">
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
 
-    @if (session('status'))
-        <div class="alert alert-success">
-            {{ 'Comment with success' }}
-        </div>
-    @endif
+    <div class="alert alert-success" style="display: {{ session('status') ? 'block' : 'none' }}">
+        {{ 'Comment sent with success' }}
+    </div>
 
     @if($guestUser)
     <form action="{{ route('m4.comment.save') }}" id="m4CommentForm" method="post">

@@ -17,14 +17,7 @@ class FrontList extends Component
      */
     public function __construct(Request $request)
     {
-        $this->url_query = $_SERVER['QUERY_STRING'] ?? null;
-
-        $comment = Comment::query()
-            ->where('url_path', $request->path())
-            ->with('user')
-            ->orderBy('m4_comment_id', 'asc')
-            ->orderBy('id', 'asc')
-            ->get()->toArray();
+        $comment = Comment::with('user')->linkComment($request->path())->get()->toArray();
 
         $new_ar = [];
 

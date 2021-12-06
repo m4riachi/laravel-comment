@@ -5,6 +5,7 @@
  */
 return [
     'guest-user' => true,
+    'ajax_post' => true,
     'default_status' => 'pending',
     'with_url_query' => false,
     'user_class' => '\App\Models\User',

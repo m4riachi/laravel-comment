@@ -14,4 +14,16 @@ class Comment extends Model
     public function user() {
         return $this->belongsTo(config('m4-comment.user_class', '\App\Models\User'));
     }
+
+    public function scopeLinkComment($query, $path) {
+        $query = $query->where('url_path', $path)
+            ->orderBy('m4_comment_id', 'asc')
+            ->orderBy('id', 'asc');
+
+        if (config('m4-comment.with_url_query', false)) {
+            $query = $query->where('url_query', $_SERVER['QUERY_STRING']);
+        }
+
+        return $query;
+    }
 }

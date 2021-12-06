@@ -8,13 +8,19 @@ use M4riachi\LaravelComment\Actions\RecaptchaVerifyingUserResponseAction;
 use M4riachi\LaravelComment\Http\Requests\CommentRequest;
 use M4riachi\LaravelComment\Models\Comment;
 
-class CommentController extends Controller {
-    public function save(CommentRequest $request) {
+class CommentController extends Controller
+{
+    public function save(CommentRequest $request)
+    {
         $data = $request->safe()->only([
             'user_name', 'user_email', 'comment', 'url_path', 'url_query', 'user_id', 'status', 'm4_comment_id'
         ]);
 
         Comment::create($data);
+
+        if (config('m4-comment.ajax_post', true)) {
+            return ['success' => true];
+        }
 
         return back()->with('status', 'success');
     }
