@@ -15,8 +15,8 @@ return [
     ],
     'recaptcha' => [
         'enable' => true,
-        'site-key' => '6Lcii3IdAAAAAIVRrwtjr-DiKxmMXRMmA6DUTZWu',
-        'secret-key' => '6Lcii3IdAAAAAOG_aCtDuALiohIGHmq9GrVCf_i7',
+        'site-key' => '',
+        'secret-key' => '',
         'checked_score' => 0.4
     ],
 ];

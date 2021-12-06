@@ -3,7 +3,7 @@
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/m4riachi/laravel-comment.svg?style=flat-square)](https://packagist.org/packages/m4riachi/laravel-comment)
 [![Total Downloads](https://img.shields.io/packagist/dt/m4riachi/laravel-comment.svg?style=flat-square)](https://packagist.org/packages/m4riachi/laravel-comment)
 
-This package adds a comment block in the page where it is inserted, the comment is linked to a page (link) but not to a model
+This package add a comment block in the page where it is inserted, the comment is linked to a page (link) not to a model.
 
 ## Installation
 
@@ -12,12 +12,42 @@ You can install the package via composer:
 ```bash
 composer require m4riachi/laravel-comment
 ```
-
-## Usage
-
-```php
-// Usage description here
+\
+You have publish and run the migrations with:
+```shell script
+php artisan vendor:publish --provider=M4riachi\LaravelComment\LaravelCommentServiceProvider --tag=migrations
+php artisan migrate
 ```
+\
+You can publish the config file with:
+```shell script
+php artisan vendor:publish --provider=M4riachi\LaravelComment\LaravelCommentServiceProvider --tag=config
+```
+##
+#### Optional
+If you need to make change in the html design the views files with:
+```shell script
+php artisan vendor:publish --provider=M4riachi\LaravelComment\LaravelCommentServiceProvider --tag=views
+```
+## Usage
+For the **front side** there is two tags to include in the html of the page where you want to add the comment block.
+```html
+<x-m4-comment-front-bloc  />
+```
+This tag will show the comment form and a list of inserted comment on this page.
+```html
+<x-m4-comment-front-javascript  />
+```
+This one will add the javascript needed.
+
+\
+For the **back side** there is just one tag.
+```html
+<x-m4-comment-back-list />
+```
+This tag need to use it in the back office, will show all the comment inserted with pagination and two action.
+- An action to change the comment status
+- And delete action
 
 ### Testing
 

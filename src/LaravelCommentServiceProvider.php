@@ -38,17 +38,17 @@ class LaravelCommentServiceProvider extends ServiceProvider
 
         $this->publishes([
             __DIR__.'/../config/config.php' => config_path('m4-comment.php'),
-        ], 'm4-config');
+        ], 'config');
 
         if (! class_exists('CreateM4CommentTable')) {
             $this->publishes([
                 __DIR__.'/../database/migrations/create_m4_comment_table.php.stub' => database_path('migrations/' . date('Y_m_d_His', time()) . '_create_m4_comment_table.php'),
-            ], 'm4-migrations');
+            ], 'migrations');
         }
 
         $this->publishes([
             __DIR__.'/../resources/views' => resource_path('views/vendor/laravel-comment'),
-        ], 'm4-views');
+        ], 'views');
     }
 
     /**
