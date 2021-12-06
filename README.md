@@ -15,19 +15,19 @@ composer require m4riachi/laravel-comment
 \
 You have publish and run the migrations with:
 ```shell script
-php artisan vendor:publish --provider=M4riachi\LaravelComment\LaravelCommentServiceProvider --tag=migrations
+php artisan vendor:publish --provider="M4riachi\LaravelComment\LaravelCommentServiceProvider" --tag=migrations
 php artisan migrate
 ```
 \
 You can publish the config file with:
 ```shell script
-php artisan vendor:publish --provider=M4riachi\LaravelComment\LaravelCommentServiceProvider --tag=config
+php artisan vendor:publish --provider="M4riachi\LaravelComment\LaravelCommentServiceProvider" --tag=config
 ```
 ##
 #### Optional
 If you need to make change in the html design the views files with:
 ```shell script
-php artisan vendor:publish --provider=M4riachi\LaravelComment\LaravelCommentServiceProvider --tag=views
+php artisan vendor:publish --provider="M4riachi\LaravelComment\LaravelCommentServiceProvider" --tag=views
 ```
 ## Usage
 For the **front side** there is two tags to include in the html of the page where you want to add the comment block.
