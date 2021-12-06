@@ -4,6 +4,7 @@ namespace M4riachi\LaravelComment\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 use M4riachi\LaravelComment\Actions\RecaptchaVerifyingUserResponseAction;
+use M4riachi\LaravelComment\Enums\CommentStatusEnum;
 
 class CommentRequest extends FormRequest
 {
@@ -26,7 +27,7 @@ class CommentRequest extends FormRequest
     {
         $this->merge([
             'user_id' => (auth()->check()) ? auth()->user()->id : null,
-            'status' => config('m4-comment.default_status', 'pending'),
+            'status' => config('m4-comment.default_status', CommentStatusEnum::pending()),
         ]);
     }
 

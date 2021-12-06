@@ -5,8 +5,10 @@ namespace M4riachi\LaravelComment;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Routing\Router;
 use M4riachi\LaravelComment\Http\Middleware\CheckUser;
+use M4riachi\LaravelComment\View\Components\BackList;
 use M4riachi\LaravelComment\View\Components\FrontBloc;
 use M4riachi\LaravelComment\View\Components\FrontForm;
+use M4riachi\LaravelComment\View\Components\FrontJavascript;
 use M4riachi\LaravelComment\View\Components\FrontList;
 use M4riachi\LaravelComment\View\Components\FrontListComment;
 
@@ -19,9 +21,7 @@ class LaravelCommentServiceProvider extends ServiceProvider
     {
         $router = $this->app->make(Router::class);
         $router->aliasMiddleware('m4-check-user', CheckUser::class);
-        /*
-         * Optional methods to load your package assets
-         */
+
         // $this->loadTranslationsFrom(__DIR__.'/../resources/lang', 'laravel-comment');
         $this->loadViewsFrom(__DIR__.'/../resources/views', 'm4-comment');
         $this->loadMigrationsFrom(__DIR__.'/../database/migrations');
@@ -32,6 +32,8 @@ class LaravelCommentServiceProvider extends ServiceProvider
             FrontForm::class,
             FrontList::class,
             FrontListComment::class,
+            FrontJavascript::class,
+            BackList::class,
         ]);
 
         $this->publishes([
@@ -43,6 +45,10 @@ class LaravelCommentServiceProvider extends ServiceProvider
                 __DIR__.'/../database/migrations/create_m4_comment_table.php.stub' => database_path('migrations/' . date('Y_m_d_His', time()) . '_create_m4_comment_table.php'),
             ], 'm4-migrations');
         }
+
+        $this->publishes([
+            __DIR__.'/../resources/views' => resource_path('views/vendor/laravel-comment'),
+        ], 'm4-views');
     }
 
     /**

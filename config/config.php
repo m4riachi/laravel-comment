@@ -1,11 +1,10 @@
 <?php
-
-/*
- * You can place your custom package configuration in here.
- */
 return [
     'guest-user' => true,
-    'ajax_post' => true,
+    'ajax' => [
+        'enable' => true,
+        'include_axios' => true,
+    ],
     'default_status' => 'pending',
     'with_url_query' => false,
     'user_class' => '\App\Models\User',

@@ -1,10 +1,9 @@
-# Very short description of the package
+# Laravel comment package
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/m4riachi/laravel-comment.svg?style=flat-square)](https://packagist.org/packages/m4riachi/laravel-comment)
 [![Total Downloads](https://img.shields.io/packagist/dt/m4riachi/laravel-comment.svg?style=flat-square)](https://packagist.org/packages/m4riachi/laravel-comment)
-![GitHub Actions](https://github.com/m4riachi/laravel-comment/actions/workflows/main.yml/badge.svg)
 
-This is where your description should go. Try and limit it to a paragraph or two, and maybe throw in a mention of what PSRs you support to avoid any confusion with users and contributors.
+This package adds a comment block in the page where it is inserted, the comment is linked to a page (link) but not to a model
 
 ## Installation
 
@@ -46,7 +45,3 @@ If you discover any security related issues, please email taoufiq.benmessaoud@gm
 ## License
 
 The MIT License (MIT). Please see [License File](LICENSE.md) for more information.
-
-## Laravel Package Boilerplate
-
-This package was generated using the [Laravel Package Boilerplate](https://laravelpackageboilerplate.com).

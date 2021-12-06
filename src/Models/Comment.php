@@ -3,6 +3,7 @@
 namespace M4riachi\LaravelComment\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use M4riachi\LaravelComment\Enums\CommentStatusEnum;
 
 class Comment extends Model
 {
@@ -16,7 +17,9 @@ class Comment extends Model
     }
 
     public function scopeLinkComment($query, $path) {
-        $query = $query->where('url_path', $path)
+        $query = $query
+            ->where('url_path', $path)
+            ->where('status', CommentStatusEnum::published())
             ->orderBy('m4_comment_id', 'asc')
             ->orderBy('id', 'asc');
 
