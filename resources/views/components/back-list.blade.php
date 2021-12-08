@@ -17,8 +17,8 @@
             <tbody>
             @foreach($comments as $comment)
                 <tr class="{{ $comment->status == \M4riachi\LaravelComment\Enums\CommentStatusEnum::pending() ? 'table-danger' : '' }}">
-                    <td>{{ is_null($comment->user) ? $comment->user_name : $comment->user->name }}</td>
-                    <td>{{ is_null($comment->email) ? $comment->user_email : $comment->user->email }}</td>
+                    <td>{{ is_null($comment->user_id) ? $comment->user_name : $comment->user->name }}</td>
+                    <td>{{ is_null($comment->user_id) ? $comment->user_email : $comment->user->email }}</td>
                     <td>
                         <a href="{{ $comment->url_path }}{{ is_null($comment->url_query) ? '' : '?' . $comment->url_query}}"
                            target="_blank">
@@ -51,9 +51,5 @@
         </table>
 
     </div>
-    {{ $comments->links('vendor.pagination.bootstrap-4') }}
-
-    <script>
-
-    </script>
+    {{ view()->exists('vendor.pagination.bootstrap-4') ? $comments->links('vendor.pagination.bootstrap-4') : ''}}
 </div>

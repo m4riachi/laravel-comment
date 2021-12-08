@@ -14,7 +14,7 @@ return [
         'comment' => ['required', 'string'],
     ],
     'recaptcha' => [
-        'enable' => true,
+        'enable' => false,
         'site-key' => '',
         'secret-key' => '',
         'checked_score' => 0.4

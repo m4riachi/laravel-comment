@@ -1,9 +1,12 @@
 <div class="panel" id="formComment">
-    <div class="alert alert-danger" style="display: {{ $errors->any() ? 'block' : 'none' }}">
+
+    <div class="alert alert-danger" style="display: {{ isset($errors) && $errors->any() ? 'block' : 'none' }}">
         <ul class="error_li">
-            @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
-            @endforeach
+            @isset($errors)
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            @endisset
         </ul>
     </div>
 

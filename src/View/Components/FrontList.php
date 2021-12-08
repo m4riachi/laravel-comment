@@ -17,7 +17,10 @@ class FrontList extends Component
      */
     public function __construct(Request $request)
     {
-        $comment = Comment::with('user')->linkComment($request->path())->get()->toArray();
+        $comment = Comment::withUser()
+            ->linkComment($request->path())
+            ->get()
+            ->toArray();
 
         $new_ar = [];
 

@@ -26,7 +26,7 @@ class BackList extends Component
     {
 
         return view('m4-comment::components.back-list', [
-            'comments' => Comment::with('user')->orderBy('id', 'desc')->paginate()
+            'comments' => Comment::withUser()->orderBy('id', 'desc')->paginate()
         ]);
     }
 }
