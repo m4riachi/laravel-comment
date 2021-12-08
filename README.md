@@ -54,6 +54,7 @@ This tag need to use it in the back office, will show all the comment inserted w
 - And delete action
 
 ####Config file
+
 From the config file you can configure many option.
 
 - You can set if a guest user can post a comment, if true 2 input will by added to the form (name, email)
